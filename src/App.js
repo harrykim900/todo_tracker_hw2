@@ -85,6 +85,12 @@ class App extends Component {
     }, this.afterToDoListsChangeComplete);
   }
 
+  addNewToDoListItem = () => {
+    let newToDoListItem = this.makeNewToDoListItem();
+    this.state.currentList.items.push(newToDoListItem);
+  }
+  
+
   makeNewToDoList = () => {
     let newToDoList = {
       id: this.highListId,
@@ -121,6 +127,7 @@ class App extends Component {
           toDoLists={this.state.toDoLists}
           loadToDoListCallback={this.loadToDoList}
           addNewListCallback={this.addNewList}
+          addNewToDoListItemCallback={this.addNewToDoListItem}
         />
         <Workspace toDoListItems={items} />
       </div>

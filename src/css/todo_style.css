@@ -110,3 +110,28 @@
 #add-item-button, #delete-list-button, #close-list-button {
     text-align: center;
 }
+
+#add-item-button:hover, #delete-list-button:hover, #close-list-button:hover {
+    color: var(--swatch-accent);
+    cursor: pointer;
+  }
+
+#add-list-button:hover {
+    cursor:pointer;
+}
+
+#undo-button:hover {
+    color: var(--swatch-accent);
+}
+
+#redo-button:hover {
+    color: var(--swatch-accent);   
+}
+
+#modal_yes_no_dialog {
+    height: 250px;
+    visibility: hidden;
+    z-index: 5;
+    text-align: left;
+    background-color: #EEE8AA
+  }
