@@ -10,11 +10,16 @@ class ToDoItem extends Component {
         
         // DISPLAY WHERE WE ARE
         console.log("\t\t\tToDoItem " + this.props.toDoListItem.id + " constructor");
+        console.log("Item due date " + this.props.toDoListItem.due_date);
     }
 
     componentDidMount = () => {
         // DISPLAY WHERE WE ARE
         console.log("\t\t\tToDoItem " + this.props.toDoListItem.id + " did mount");
+    }
+
+    handleTaskChange = (e) => {
+        this.setState({});
     }
 
     render() {
@@ -27,12 +32,12 @@ class ToDoItem extends Component {
 
         return (
             <div id={'todo-list-item-' + listItem.id} className='list-item-card'>
-                <div className='item-col task-col' contentEditable = "true" spellCheck="false">{listItem.description}</div>
-                <div className='item-col due-date-col' type = "date" contentEditable = "true">{listItem.due_date}</div>
-                <div className='item-col status-col' className={statusType} contentEditable = "true">{listItem.status}</div>
+                <div className='item-col task-col' contentEditable = "true" spellCheck="false" onChange={this.handleTaskChange}>{listItem.description}</div>
+                <div className='item-col due-date-col' type = "date" contentEditable = "true" spellCheck="false">{listItem.due_date}</div>
+                <div className='item-col status-col' className={statusType} contentEditable = "true" spellCheck="false">{listItem.status}</div>
                 <div className='item-col test-4-col'></div>
                 <div className='item-col list-controls-col'>
-                    <KeyboardArrowUp className='list-item-control todo-button' onClick={console.log("")}/>
+                    <KeyboardArrowUp className='list-item-control todo-button' onClick={console.log("dsad")}/>
                     <KeyboardArrowDown className='list-item-control todo-button' />
                     <Close className='list-item-control todo-button' />
                     <div className='list-item-control'></div>

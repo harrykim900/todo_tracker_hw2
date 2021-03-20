@@ -29,7 +29,7 @@ class LeftSidebar extends Component {
                         
                     </span>
                 </div>
-                <div id="todo-lists-list">
+                <div id="todo-lists-list" contentEditable = "true" spellCheck="false">
                 {
                     this.props.toDoLists.map((toDoList) => (
                         <ListLink

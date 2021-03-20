@@ -7,6 +7,7 @@ import jsTPS from './common/jsTPS'
 import Navbar from './components/Navbar'
 import LeftSidebar from './components/LeftSidebar'
 import Workspace from './components/Workspace'
+import ToDoItem from './components/ToDoItem'
 {/*import ItemsListHeaderComponent from './components/ItemsListHeaderComponent'
 import ItemsListComponent from './components/ItemsListComponent'
 import ListsComponent from './components/ListsComponent'
@@ -59,6 +60,7 @@ class App extends Component {
   // WILL LOAD THE SELECTED LIST
   loadToDoList = (toDoList) => {
     console.log("loading " + toDoList);
+    console.log("Current list: " + this.state.currentList);
 
     // MAKE SURE toDoList IS AT THE TOP OF THE STACK BY REMOVING THEN PREPENDING
     const nextLists = this.state.toDoLists.filter(testList =>
@@ -73,6 +75,7 @@ class App extends Component {
   }
 
   addNewList = () => {
+    console.log("Added new list");
     let newToDoListInList = [this.makeNewToDoList()];
     let newToDoListsList = [...newToDoListInList, ...this.state.toDoLists];
     let newToDoList = newToDoListInList[0];
@@ -86,9 +89,15 @@ class App extends Component {
   }
 
   addNewToDoListItem = () => {
-    let newToDoListItem = this.makeNewToDoListItem();
+    console.log("Current list " + this.props.currentList);
+    console.log("Adding new list item");
+    let newToDoListItem = [this.makeNewToDoListItem()];
     this.state.currentList.items.push(newToDoListItem);
-  }
+    this.setState({
+
+      })
+    }
+
   
 
   makeNewToDoList = () => {
@@ -118,6 +127,18 @@ class App extends Component {
     localStorage.setItem("recent_work", toDoListsString);
   }
 
+  deleteList = () => {
+    console.log("reached deleteList()");
+  }
+
+  closeList = () => {
+    console.log("Reached closeList()")
+    this.setState({
+      currentList: null
+
+    });
+  }
+
   render() {
     let items = this.state.currentList.items;
     return (
@@ -127,9 +148,12 @@ class App extends Component {
           toDoLists={this.state.toDoLists}
           loadToDoListCallback={this.loadToDoList}
           addNewListCallback={this.addNewList}
-          addNewToDoListItemCallback={this.addNewToDoListItem}
         />
-        <Workspace toDoListItems={items} />
+        <Workspace toDoListItems={items} 
+          addNewToDoListItemCallback={this.addNewToDoListItem}
+          deleteListCallback={this.deleteList}
+          closeListCallback={this.closeList}
+        />
       </div>
     );
   }

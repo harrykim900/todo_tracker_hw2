@@ -128,10 +128,3 @@
     color: var(--swatch-accent);   
 }
 
-#modal_yes_no_dialog {
-    height: 250px;
-    visibility: hidden;
-    z-index: 5;
-    text-align: left;
-    background-color: #EEE8AA
-  }

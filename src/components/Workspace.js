@@ -10,8 +10,19 @@ class Workspace extends Component {
         super(props);
     }
 
-    handleAddNewToDoListItem = () =>{
+    handleAddNewToDoListItem = () => {
+        console.log("Add new list item");
         this.props.addNewToDoListItemCallback();
+    }
+    
+    handleDeleteButton = () => {
+        console.log("Delete List");
+        this.props.deleteListCallback();
+    }
+    
+    handleCloseButton = () => {
+        console.log("Close list");
+        this.props.closeListCallback();
     }
 
     render() {
@@ -26,8 +37,14 @@ class Workspace extends Component {
                             id="add-item-button" 
                             className="list-item-control material-icons todo-button" 
                             onClick={this.handleAddNewToDoListItem}/>
-                        <Delete id="delete-list-button" className="list-item-control material-icons todo-button" />
-                        <Close id="close-list-button" className="list-item-control material-icons todo-button" />
+                        <Delete 
+                            id="delete-list-button" 
+                            className="list-item-control material-icons todo-button" 
+                            onClick={this.handleDeleteButton}/>
+                        <Close 
+                            id="close-list-button" 
+                            className="list-item-control material-icons todo-button"
+                            onClick={this.handleCloseButton} />
                     </div>
                 </div>
                 <div id="todo-list-items-div">
